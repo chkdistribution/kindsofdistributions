@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="next" title="パソコン(PC)へLinux OSインストールする手順" href="ch01-1_pcvendorkind01.html" />  <meta name="generator" content="Re:VIEW" />
+  <title>第II部 第2部 | 流布s、流布s、Linux</title>
+</head>
+<body>
+  <div class="book">
+    <nav class="side-content">
+      <h1>流布s、流布s、Linux</h1>
+      <ul class="book-toc">
+<li><a href="index.html">TOP</a></li>
+<li>第I部　第1部
+<ul><li><a href="ch01-1_pcvendorkind01.html">第1章　パソコン(PC)へLinux OSインストールする手順</a></li>
+</ul></li>
+<li>第II部　第2部
+<ul><li><a href="ch02-1_installlistkeyboard.html">第2章　インストール時のキーボード選択の情報</a></li>
+</ul></li>
+<li><a href="debian_1160.html">付録A　初期導入（Debian 11.6.0 :debian-11.6.0-amd64-DVD-1.iso）のインストール時の画面遷移情報</a></li>
+<li><a href="gard_cinamon230319.html">付録B　初期導入（Garuda 230319 :garuda-cinnamon-linux-zen-230319.iso）のインストール時の画面遷移情報</a></li>
+</ul>
+      <p class="review-signature">powered by <a href="http://reviewml.org/">Re:VIEW</a></p>
+    </nav>
+    <div class="book-body">
+      <header>
+      </header>
+      <div class="book-page">
+        <div class="part">
+<h1 class="part-number">第II部</h1>
+<h2 class="part-title">第2部</h2>
+</div>
+      </div>
+      <nav class="book-navi book-prev">
+              </nav>
+      <nav class="book-navi book-next">
+                <a href="ch01-1_pcvendorkind01.html">
+          <div class="book-cursor"><span class="cursor-next">▶</span></div>
+        </a>
+              </nav>
+    </div>
+  </div>
+  <footer>
+      </footer>
+<style type="text/css">
+.showbox {
+   display: inline-block;
+}
+.showbox p {
+   text-align: center;
+}
+.showbox img {
+   border: 2px solid #00a;
+   display: block;
+}
+.showbox img + span {
+   background-color: #00a;
+   color: white;
+   font-weight: bold;
+   display: block;
+}
+</style>
+<script type="text/javascript">
+var showset = [
+
+];
+</script>
+<script type="text/javascript">
+// -----------------------------------------------
+// ▼関数オブジェクトA：指定画像を順に表示させる処理（※書き換え不要）
+// -----------------------------------------------
+var ImageSlider = function() {
+   this.ct = 0;   // カウンタ
+   this.slide = function(target,imglist) {
+      if( this.ct >= imglist.length ) {
+         // カウンタが画像数よりも大きくなったら0番に戻す
+         this.ct = 0;
+      }
+      // スライドショーの掲載領域を作っている対象要素を得る
+      var targetId = document.getElementById(target);
+      // 1つ目のimg要素にある画像URLを置き換える
+      targetId.getElementsByTagName('img')[0].src = imglist[this.ct][0];
+      // 1つ目のspan要素にあるキャプション文字列を置き換える
+      targetId.getElementsByTagName('span')[0].innerHTML = imglist[this.ct][1];
+      // カウンタを1進める
+      this.ct++;
+   }
+};
+
+// ---------------------------------------------
+// ▼関数オブジェクトB：スライドショーを制御する（※書き換え不要）
+// ---------------------------------------------
+var ShowController = function(target,imglist,intsec) {
+   this.slideid = 0;        // タイマーID保持用
+   this.imgsld  = 0;        // スライドショー実行オブジェクトの保持用
+   this.target  = target;   // 対象要素のid名保持用
+   this.imglist = imglist;  // 画像リストの変数
+   this.intsec  = intsec;   // 画像切り替えミリ秒数
+   this.startstop = function() {
+      if( this.slideid == 0 ) {
+         // 始まっていなければ始める
+         var self = this;
+         if( !self.imgsld ) { self.imgsld = new ImageSlider(); }
+         this.slideid = setInterval( function() { self.imgsld.slide(self.target,self.imglist); },this.intsec);      // ※slideidには「0ではない正の整数値」が入る
+      }
+      else {
+         // IDがあれば止める
+         clearInterval(this.slideid);
+         this.slideid = 0;
+      }
+   }
+};
+
+// ----------------------------------------------------
+// ▼すべてのボタンのクリックイベントに関数を割り当てる（※書き換え不要）
+// ----------------------------------------------------
+var ctrlButtons = document.getElementsByClassName('startstopbtn');
+for( var i = 0; i < ctrlButtons.length; i++ ) {
+   var oneshow = new ShowController(showset[i][0],showset[i][1],showset[i][2]);
+   (function(){
+      var os = oneshow;
+      ctrlButtons[i].onclick = function() { os.startstop(); };
+   })();
+}
+</script>
+</body>
+</html>
