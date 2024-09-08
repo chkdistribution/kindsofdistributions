@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="next" title="インストール時のキーボード選択の情報" href="ch02-1_installlistkeyboard.html" />  <meta name="generator" content="Re:VIEW" />
+  <title>パソコン(PC)へLinux OSインストールする手順 | 流布s、流布s、Linux</title>
+</head>
+<body>
+  <div class="book">
+    <nav class="side-content">
+      <h1>流布s、流布s、Linux</h1>
+      <ul class="book-toc">
+<li><a href="index.html">TOP</a></li>
+<li>第I部　第1部
+<ul><li><a href="ch01-1_pcvendorkind01.html">第1章　パソコン(PC)へLinux OSインストールする手順</a></li>
+</ul></li>
+<li>第II部　第2部
+<ul><li><a href="ch02-1_installlistkeyboard.html">第2章　インストール時のキーボード選択の情報</a></li>
+</ul></li>
+<li><a href="debian_1160.html">付録A　初期導入（Debian 11.6.0 :debian-11.6.0-amd64-DVD-1.iso）のインストール時の画面遷移情報</a></li>
+<li><a href="gard_cinamon230319.html">付録B　初期導入（Garuda 230319 :garuda-cinnamon-linux-zen-230319.iso）のインストール時の画面遷移情報</a></li>
+</ul>
+      <p class="review-signature">powered by <a href="http://reviewml.org/">Re:VIEW</a></p>
+    </nav>
+    <div class="book-body">
+      <header>
+      </header>
+      <div class="book-page">
+        <h1><a id="h1"></a><span class="secno">第1章　</span>パソコン(PC)へLinux OSインストールする手順</h1>
+
+<h2><a id="h1-1"></a><span class="secno">1.1　</span>Linux導入対象のPCメーカーでインストール方法の確認と選択</h2>
+
+<h3><a id="h1-1-1"></a>ブートメディアを確認する</h3>
+
+<h4><a id="h1-1-1-1"></a>BIOSで選択できるブートメディを確認する(BIOSの確認)</h4>
+<p>BIOSとは、PCが起動する一番はじめのもの。PCの電源を入れた直後に、BIOSセットアップを呼び出すキーを押すことで可能。</p>
+<p>DVD・CD-ROM、HDDやUSBから起動できるか、BIOS（BasicInputOutputSystem)を確認。パソコンの取扱説明書を見るか、ベンダのサポートWebサイトを参照するか等ありますが、古くなったPCの取扱説明書はないと想定しています。</p>
+<p>BIOSセットアップを呼び出すキーは限られているので以下に記す代表的なキーで試します。</p>
+<p>BIOS設定画面に入るための代表的なキー：</p>
+<p>[F1]、[F2]、[F8]、[F10]、[F12]、[Delete]、[Tab]</p>
+<ul>
+<li>PCメーカー別</li>
+<li>マザーボード別（PCのCPUやメモリが搭載されたボード)</li>
+</ul>
+<p>の情報も提示します。（PCメーカのシール等が見えなくなったり、古くてわからないときはお手上げですが）</p>
+<div id="maker-bios" class="table">
+<p class="caption">表1.1: PCメーカー別 の BIOS 起動キー</p>
+<table>
+<tr><th>PCメーカー名</th><th>BIOS起動キー</th></tr>
+<tr><td>Panasonic</td><td>「F2」キー</td></tr>
+<tr><td>日立</td><td>「F2」キー</td></tr>
+<tr><td>NEC</td><td>「F2」キー</td></tr>
+<tr><td>東芝</td><td>「F2」キー か 「F12」キー</td></tr>
+<tr><td>富士通</td><td>「F2」キー か 「F12」キー</td></tr>
+<tr><td>Sharp</td><td>「F2」キー</td></tr>
+<tr><td>SONY・VAIO</td><td>「F2」キー</td></tr>
+<tr><td>Lenovo（IBM）</td><td>「F1」キー か 「F12」キー</td></tr>
+<tr><td>HP（Compaq）</td><td>「F10」キー</td></tr>
+<tr><td>Dell</td><td>「F2」キー か 「F12」キー か 「Ctrl+Alt+Enter」キー</td></tr>
+<tr><td>Acer</td><td>「F2」キー</td></tr>
+<tr><td>ASUS</td><td>「F2」キー か 「F8」キー</td></tr>
+</table>
+</div>
+<p>デスクトップPCでケースを開けて確認できる場合は以下情報です。ノートPCの場合、メーカーにより内部の確認が難しい場合があります。ノートPCの機種などから、Web検索して情報を参照してください。</p>
+<div id="mb-bios" class="table">
+<p class="caption">表1.2: マザーボード(MB)メーカー別 の BIOS 起動キー</p>
+<table>
+<tr><th>MBメーカー名</th><th>BIOS起動キー</th></tr>
+<tr><td>ASUS</td><td>「Del」キー か 「TAB」キーを押すとPOSTで停止、提示されたキーでBIOS画面</td></tr>
+<tr><td>Giga-byte</td><td>「Del」キー</td></tr>
+<tr><td>Intel</td><td>「F2」キー</td></tr>
+<tr><td>ESC</td><td>「Del」キー</td></tr>
+<tr><td>ASROCK</td><td>「F2」キー</td></tr>
+<tr><td>MSI</td><td>「Del」キー</td></tr>
+</table>
+</div>
+<p>これらのキーを1つずつ試し、BIOSセットアップ画面となることを確認します。(以下、BIOSの代表的な会社であるAMIとPhoenix の セットアップ画面）</p>
+<p>注意要なのは、上記キーを押すタイミング。上記キー入力のタイミングは</p>
+<p>パソコンによってはかなり厳しく、正しいキーを押している場合にも、</p>
+<p>BIOSセットアップを呼び出せないことがある。</p>
+<p>(注意）パソコンの電源を入れてディスプレイに何か表示されたらすぐに、</p>
+<p>上記の代表的なキー思われるなかの1つを、1秒間に1～3回程度の頻度で連打する。</p>
+<p>あまり連打すると、BIOSがキーボードのテストに失敗してキーボード・エラーを</p>
+<p>起こすことがあるので注意。</p>
+<p>パソコンの機種により、[Esc]キーを押しながらPCの電源を入れなければならない場合もあります。 Windows 10やWindows 11などを搭載するタブレット型PCの場合は、音量調整ボタン「＋」か「－」(型番や機種によって異なる)のいずれかと電源ボタンを同時押しでBIOSを起動するものもあります。</p>
+<p>Windows上の「高速スタートアップ」が有効になっている場合、電源OFF状態からのコールドブートではこれらのキー押下でBIOSに入る事は出来ません。Windows が「UEFI形式でインストール」され、かつ「マザーボードのFast Bootが有効になっている状態」でも、これらのキー押下でBIOSに入る事は出来ません。UEFI Windows PCで F2 キーや DEL キーで BIOS画面に入るには、以下の手順が必要です。Windows 10でF2キーやDELキーでUEFI (BIOS) 画面を起動する手順※リンク先手順の概要￼▲クリックで拡大まず一度 Windows を起動して「高速スタートアップ」を無効化し、さらに上図の画面を経由してUEFI画面に入り、そこでFast Bootを無効化しておく必要があります。</p>
+<p>AMI BIOS 画面例</p>
+<div id="BIOS_ami-g1" class="image">
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/BIOS_ami-g1.jpg" width="450" height="350" alt="AMI BIOS画面" />
+<p class="caption">
+図1.1: AMI BIOS画面
+</p>
+</div>
+<div id="BIOS_ami-g2" class="image">
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/BIOS_ami-g2.jpg" width="450" height="350" alt="AMI BIOS画面" />
+<p class="caption">
+図1.2: AMI BIOS画面
+</p>
+</div>
+<div id="BIOS_ami-g3" class="image">
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/BIOS_ami-g3.jpg" width="450" height="350" alt="AMI BIOS画面" />
+<p class="caption">
+図1.3: AMI BIOS画面
+</p>
+</div>
+<p>Phoenix Award BIOS 画面例</p>
+<div id="BIOS_phoenix-g00" class="image">
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/BIOS_phoenix-g00.jpg" alt="AMI BIOS画面" />
+<p class="caption">
+図1.4: AMI BIOS画面
+</p>
+</div>
+<div id="BIOS_phoenix-g01" class="image">
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/BIOS_phoenix-g01.jpg" alt="AMI BIOS画面" />
+<p class="caption">
+図1.5: AMI BIOS画面
+</p>
+</div>
+<div id="BIOS_phoenix-g02" class="image">
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/BIOS_phoenix-g02.jpg" alt="AMI BIOS画面" />
+<p class="caption">
+図1.6: AMI BIOS画面
+</p>
+</div>
+<div id="BIOS_phoenix-g03" class="image">
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/BIOS_phoenix-g03.jpg" alt="AMI BIOS画面" />
+<p class="caption">
+図1.7: AMI BIOS画面
+</p>
+</div>
+<p>IBM ThinkPad BIOS 画面例Intel Visual BIOS 画面例( https://www.4900.co.jp/smarticle/7785/ )</p>
+
+<h3><a id="h1-1-2"></a>各社PCシリーズのBIOS切替キー一覧</h3>
+<p>以下のようにまとめようと考えましたが、情報収集やまとめに時間がかかるので挫折しています。まとめられるようになったらまとめます。</p>
+<ul>
+<li>導入対象パソコン<ul>
+<li>&lt;製造会社&gt;</li>
+<li>&lt;機種名&gt;</li>
+<li>&lt;型番&gt;</li>
+<li>&lt;製造年月日&gt;</li>
+<li>&lt;BIOS種類&gt; わかったら AMI , Phoenix, IntelVisual, Thinkpad, その他から選択</li>
+<li>&lt;BIOS切替キー&gt;</li>
+<li>&lt;BIOS切替条件等&gt;</li>
+</ul>
+</li>
+</ul>
+<p>PCメーカー名とシリーズで現状まとめました。すいません。</p>
+<div id="pc-kind" class="table">
+<p class="caption">表1.3: PCメーカーとシリーズ(ノートPC)</p>
+<table>
+<tr><th>PCメーカー名</th><th>シリーズ名(ノートPC)</th><th>BIOS切替キー</th></tr>
+<tr><td>Panasonic</td><td>Let&#39;sNote、TOUGHBOOK（タフブック）</td><td>ー</td></tr>
+<tr><td>Sharp</td><td>Mebius</td><td>ー</td></tr>
+<tr><td>日立</td><td>Flora</td><td>ー</td></tr>
+<tr><td>NEC</td><td>Lavie</td><td>ー</td></tr>
+<tr><td>東芝</td><td>Dynabook</td><td>ー</td></tr>
+<tr><td>富士通</td><td>FMV LIFEBOOK、FMV LOOX、arrows Tab(アローズタブ)、Chromebook(クロームブック)</td><td>ー</td></tr>
+<tr><td>SONY・VAIO</td><td>VAIO</td><td>ー</td></tr>
+<tr><td>Lenovo（IBM）</td><td>ThinkPad</td><td>ー</td></tr>
+<tr><td>HP（Compaq）</td><td>Pavilion、Elite(エリート)、ProBook(プロブック)、EliteBook(エリートブック)、ENVY、Victus(ビクタス)、OMEN、Spectre(スペクトル)、Chromebook(クロームブック)</td><td>ー</td></tr>
+<tr><td>Dell</td><td>Vostro、Inspiron(インスパイロン)、Alienware、Dell G、Latitude、Precision、XPS</td><td>ー</td></tr>
+<tr><td>Acer</td><td>Aspire、Swift、Nitro、Chromebook(クロームブック)、Predator(プレデター)、Vero(ヴェロ)</td><td>ー</td></tr>
+<tr><td>ASUS</td><td>ROG、VivoBook(ビボブック)、Zenbook(ゼンブック)、TUF Gaming、Chrombook、ExpertBook(エキスパートブック)</td><td>ー</td></tr>
+</table>
+</div>
+
+<h2><a id="h1-2"></a><span class="secno">1.2　</span>Linuxディストリビューションの選択</h2>
+<p>以下のディストリビューションがあるようです。</p>
+<ul>
+<li>DebianとUbuntu(インストール対象のソフトウェア管理コマンドがdpkg,apt） 以下提示</li>
+<li>Redhat（管理コマンドがyum）とCentOS（現在サービス終了）、Alma Linux（RHEL互換） いずれ提示予定</li>
+<li>Arch派生のgaruda（管理コマンドがpacman）に画面の見た目がエキゾチックでカッコ良く、他のディトリビューションと違っているので提示</li>
+</ul>
+<p>選択観点としては人により様々でしょうが、以下の項目で分類します。</p>
+<p>１．インストール後のデフォルト画面とメニューの見た目で選択</p>
+<p>２．インストールしようとしているPCのディスク容量による選択</p>
+<p>３．インストールしようとしているPCの持つハードウェアスペックによる選択</p>
+<p>※初期インストール難易度は、ディストリビューションをインストール時の、キーボード設定・ファイルシステム設定・日本語による設定画面があるかどうかで、ない場合は、＋１加算して難易度を表示する。 「０」が一番簡単ということ。※導入後難易度は、日本語入力・画面日本語表示・システム設定画面の日本語表示・システム設定画面起動しやすさの有無でない場合、＋１加算する。</p>
+<p>以下のディストリビューション発展経緯を参照して、大元のディストリビューションから派生したものを１つの表(テーブル)として表記します。<br />https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg</p>
+<p>Ubuntuの以下のサイトで、重複したURLがある場合の大元の正規URLとしてCDイメージを提供し、コミュニティからのサポートを受けることができるようです。</p>
+<p>http://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/releases/</p>
+<ul>
+<li>Kubuntu</li>
+<li>Lubuntu</li>
+<li>Mythbuntu</li>
+<li>Ubuntu Budgie</li>
+<li>Ubuntu GNOME</li>
+<li>UbuntuKylin</li>
+<li>Ubuntu MATE</li>
+<li>UbuntuStudio</li>
+<li>Xubuntu</li>
+<li>UbuntuCinnamon</li>
+<li>Ubuntu Unity</li>
+<li>Edubuntu</li>
+</ul>
+<p>元となったディストリビューション Debian</p>
+<div id="install-Debiandistro" class="table">
+<p class="caption">表1.4: インストール時見た目と日本語表示・入力</p>
+<table>
+<tr><th>比較項目/ディストリビューション名</th><th>Debian 11.01</th><th>Ubuntu 22.04LTS</th></tr>
+<tr><td>初期画面</td>
+<td>
+<div class="showbox" id="slideshow1"> 
+	<p><img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g29.png" width="450" height="350" alt="[debian1106-g29]" />
+   </p>
+   <span>キャプション(hrefをいれてもよい）</span>
+   <p>
+      <input type="button" value="【開始／停止】" class="startstopbtn">
+   </p>
+</div>
+</td>
+<td>
+<div class="showbox" id="slideshow2"> 
+	<p><img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g0.png" width="450" height="350" alt="[Ubuntu2204-g0]" />
+   </p>
+   <span>キャプション(hrefをいれてもよい）</span>
+   <p>
+      <input type="button" value="【開始／停止】" class="startstopbtn">
+   </p>
+</div>
+</td></tr>
+<tr><td>最低限必要なHDD容量</td><td> 20GiB</td><td> 20GiB</td></tr>
+<tr><td>最低限必要なメインメモリサイズ</td><td> 2GiB</td><td> 2.5GiB</td></tr>
+<tr><td>初期インストール難易度</td><td> 0</td><td> 0</td></tr>
+<tr><td>初期インストール情報（画面遷移）</td><td> <a href="./debian_1160.html">付録A</a></td><td> 0</td></tr>
+<tr><td>初期（日本語による）インストール時の日本語表示</td><td> 可</td><td> 可</td></tr>
+<tr><td>初期インストール時のキーボード設定</td><td> 1</td><td> 1</td></tr>
+<tr><td>初期日本語入力可否</td><td> 可</td><td> 可</td></tr>
+<tr><td>日本語入力設定情報</td><td>ー</td><td>ー</td></tr>
+<tr><td>スクロールタッチパッド認識</td><td>ー</td><td>ー</td></tr>
+<tr><td>導入後難易度</td><td> 1</td><td> 1</td></tr>
+<tr><td>パッケージ管理コマンド</td><td> dpkg,apt</td><td>右同じ</td></tr>
+<tr><td>備考１：機器の無線LANが故障した場合のUSB代替えについて</td><td>ー</td><td>ー</td></tr>
+<tr><td>備考２：機器のBluetoothが故障した場合のUSB代替えについて</td><td>ー</td><td>ー</td></tr>
+</table>
+</div>
+<div id="install-Ubuntudistro00" class="table">
+<p class="caption">表1.5: インストール時見た目と日本語表示・入力</p>
+<table>
+<tr><th>比較項目/ディストリビューション名</th><th>lubuntu 22.10</th><th>kbuntu 22.10</th><th></th></tr>
+<tr><td>初期画面</td>
+<td>
+<div class="showbox" id="slideshow3"> 
+	<p><img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g0.png" width="450" height="350" alt="[lub2210-def-g0]" />
+   </p>
+   <span>キャプション(hrefをいれてもよい）</span>
+   <p>
+      <input type="button" value="【開始／停止】" class="startstopbtn">
+   </p>
+</div>
+</td>
+<td>
+<div class="showbox" id="slideshow4"> 
+	<p><img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g0.png" width="450" height="350" alt="[kub2210-g0]" />
+   </p>
+   <span>キャプション(hrefをいれてもよい）</span>
+   <p>
+      <input type="button" value="【開始／停止】" class="startstopbtn">
+   </p>
+</div>
+</td><td></td></tr>
+<tr><td>最低限必要なHDD容量</td><td> 20GiB</td><td>20GiB</td><td></td></tr>
+<tr><td>最低限必要なメインメモリサイズ</td><td> 2GiB</td><td> 2GiB</td><td></td></tr>
+<tr><td>初期インストール難易度</td><td> 0</td><td> 0</td><td></td></tr>
+<tr><td>初期インストール情報（画面遷移）</td><td> 0</td><td> 0</td><td></td></tr>
+<tr><td>初期（日本語による）インストール時の日本語表示</td><td> 可</td><td> 可</td><td></td></tr>
+<tr><td>初期インストール時のキーボード設定</td><td> 1</td><td> 1</td><td></td></tr>
+<tr><td>初期日本語入力可否</td><td> 可</td><td> 可</td><td></td></tr>
+<tr><td>日本語入力設定情報</td><td>ー</td><td>ー</td><td></td></tr>
+<tr><td>スクロールタッチパッド認識</td><td>ー</td><td>ー</td><td></td></tr>
+<tr><td>導入後難易度</td><td> 1</td><td> 1</td><td></td></tr>
+<tr><td>パッケージ管理コマンド</td><td> dpkg,apt</td><td>右同じ</td><td>右同じ</td></tr>
+<tr><td>備考１：機器の無線LANが故障した場合のUSB代替えについて</td><td>tp-link(TL-WN725N)</td><td>ー</td><td></td></tr>
+<tr><td>備考２：機器のBluetoothが故障した場合のUSB代替えについて</td><td>ー</td><td>ー</td><td></td></tr>
+</table>
+</div>
+<div id="install-Ubuntudistro01" class="table">
+<p class="caption">表1.6: インストール時見た目と日本語表示・入力</p>
+<table>
+<tr><th>比較項目/ディストリビューション名</th><th>xubuntu 22.10</th><th>ubuntuStudio 22.10</th></tr>
+<tr><td>初期画面</td>
+<td>
+<div class="showbox" id="slideshow5"> 
+	<p><img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/xub2210-g0.png" width="450" height="350" alt="[xub2210-g0]" />
+   </p>
+   <span>キャプション(hrefをいれてもよい）</span>
+   <p>
+      <input type="button" value="【開始／停止】" class="startstopbtn">
+   </p>
+</div>
+</td>
+<td>
+<div class="showbox" id="slideshow6"> 
+	<p><img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g0.png" width="450" height="350" alt="[ubstudio2210-g0]" />
+   </p>
+   <span>キャプション(hrefをいれてもよい）</span>
+   <p>
+      <input type="button" value="【開始／停止】" class="startstopbtn">
+   </p>
+</div>
+</td></tr>
+<tr><td>最低限必要なHDD容量</td><td>  20GiB</td><td>20Gib</td></tr>
+<tr><td>最低限必要なメインメモリサイズ</td><td>  2GiB</td><td>2GiB</td></tr>
+<tr><td>初期インストール難易度</td><td> 0</td><td> 0</td></tr>
+<tr><td>初期インストール情報（画面遷移）</td><td>0</td><td>0</td></tr>
+<tr><td>初期（日本語による）インストール時の日本語表示</td><td> 可</td><td>可</td></tr>
+<tr><td>初期インストール時のキーボード設定</td><td> 1</td><td> 1</td></tr>
+<tr><td>初期日本語入力可否</td><td> 可</td><td> 可</td></tr>
+<tr><td>日本語入力設定情報</td><td>ー</td><td>ー</td></tr>
+<tr><td>スクロールタッチパッド認識</td><td>ー</td><td>ー</td></tr>
+<tr><td>導入後難易度</td><td> 1</td><td> 1</td></tr>
+<tr><td>パッケージ管理コマンド</td><td> dpkg,apt</td><td>右同じ</td></tr>
+<tr><td>備考１：機器の無線LANが故障した場合のUSB代替えについて</td><td>ー</td><td>ー</td></tr>
+<tr><td>備考２：機器のBluetoothが故障した場合のUSB代替えについて</td><td>ー</td><td>ー</td></tr>
+</table>
+</div>
+<p>元となったディストリビューション RedHat Linux</p>
+<div id="install-RedHatdistro" class="table">
+<p class="caption">表1.7: インストール時見た目と日本語表示・入力</p>
+<table>
+<tr><th>比較項目/ディストリビューション名</th><th>RedHat</th><th>CentOS</th><th>AlmaLinux</th></tr>
+<tr><td>m(_ _)m 準備中 m(_ _)m</td><td></td><td></td><td></td></tr>
+</table>
+</div>
+<p>元となったディストリビューション Arch Linux</p>
+<div id="install-Archdistro00" class="table">
+<p class="caption">表1.8: インストール時見た目と日本語表示・入力</p>
+<table>
+<tr><th>比較項目/ディストリビューション名</th><th>Arch</th><th>garuda-kde</th></tr>
+<tr><td>初期画面</td>
+<td>
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Archlin.png" width="450" height="350" alt="[Archlin]" />
+</td>
+<td>
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garuda-lxqt.png" width="450" height="350" alt="[garuda-lxqt]" />
+</td></tr>
+<tr><td>最低限必要なHDD容量</td><td> 20GiB</td><td>29.9GiB</td></tr>
+<tr><td>必要なメモリサイズ</td><td> 2GB</td><td> 2.5GiB</td></tr>
+<tr><td>初期インストール難易度</td><td> 8</td><td> 1</td></tr>
+<tr><td>初期インストール情報（画面遷移）</td><td> 0</td><td> 0</td></tr>
+<tr><td>初期（日本語による）インストール時の日本語表示</td><td> 可</td><td> 可</td></tr>
+<tr><td>初期インストール時のキーボード設定</td><td> 1</td><td> 1</td></tr>
+<tr><td>初期日本語入力可否</td><td> 不可</td><td> 不可</td></tr>
+<tr><td>日本語入力設定情報</td><td> -</td><td> pacman -S fcitx5-im <br /> ５個のPkgのインストール、 <br /> /etc/enviroment の編集</td></tr>
+<tr><td>スクロールタッチパッド認識</td><td></td><td></td></tr>
+<tr><td>導入後難易度</td><td></td><td></td></tr>
+<tr><td>パッケージ管理コマンド</td><td></td><td></td></tr>
+<tr><td>備考１：</td><td></td><td></td></tr>
+<tr><td>備考２：</td><td></td><td></td></tr>
+</table>
+</div>
+<div id="install-Archdistro01" class="table">
+<p class="caption">表1.9: インストール時見た目と日本語表示・入力</p>
+<table>
+<tr><th>比較項目/ディストリビューション名</th><th>garuda-lxqt</th><th>garuda-cinamon</th></tr>
+<tr><td>初期画面</td>
+<td>
+<div class="showbox" id="slideshow7"> 
+	<p><img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g0.png" width="450" height="350" alt="[garudadr460_g0]" />
+   </p>
+   <span>キャプション(hrefをいれてもよい）</span>
+   <p>
+      <input type="button" value="【開始／停止】" class="startstopbtn">
+   </p>
+</div>
+</td>
+<td>
+<img src="/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garuda-cinamon.png" width="450" height="350" alt="[garuda-cinamon]" />
+</td></tr>
+<tr><td>最低限必要なHDD容量</td><td> 29.9GiB</td><td>29.9GiB</td></tr>
+<tr><td>必要なメモリサイズ</td><td> 2.5GiB</td><td> 2.5GiB</td></tr>
+<tr><td>初期インストール難易度</td><td> 1</td><td>1</td></tr>
+<tr><td>初期インストール情報（画面遷移）</td><td> 0</td><td><a href="./gard_cinamon230319.html">付録B</a></td></tr>
+<tr><td>初期インストール情報（画面遷移）</td><td>  0</td><td>0</td></tr>
+<tr><td>初期（日本語による）インストール時の日本語表示</td><td> 可</td><td> 可</td></tr>
+<tr><td>初期インストール時のキーボード設定</td><td> 1</td><td> 1</td></tr>
+<tr><td>初期日本語入力可否</td><td> 不可</td><td> 可(日本語表示され設定すれば日本語変換可能）</td></tr>
+<tr><td>日本語入力設定情報</td><td> インストール、 <br /> /etc/enviroment の編集</td><td>同左</td></tr>
+<tr><td>スクロールタッチパッド認識</td><td></td><td></td></tr>
+<tr><td>導入後難易度</td><td></td><td></td></tr>
+<tr><td>パッケージ管理コマンド</td><td></td><td></td></tr>
+<tr><td>備考１：</td><td></td><td></td></tr>
+<tr><td>備考２：</td><td></td><td></td></tr>
+</table>
+</div>
+
+<h2><a id="h1-3"></a><span class="secno">1.3　</span>インストールメディアの選択</h2>
+
+<h3><a id="h1-3-1"></a>基本的にWindowsのサポートが切れる方を対象と想定します。</h3>
+<p>　サポートが切れる前に決断して、前述のLinuxのディストリビューションを選択したでしょうか。　画像系を編集操作をしたい方は、ubuntustudio　を選択するなどあります。　Webブラウザの利用が主のかたは、どのディストリビューションでどの種類のWebブラウザを　インストール可能なので、あとは自分が好きな、画面環境で選択しそうと考えています。　（Webブラウザ例：FireFox,Chrome,Vivaldi,Opera,Sleipnir,・・・・ )</p>
+<p>　ディストリビューションを選択して、ISOイメージをダウンロードしたら</p>
+<p>　Rufusをダウンロードして、ブータブルメディアであるUSBメモリを作成してインストールですね。　自分が持っているPCのメモリ容量とハードディスク容量さえわかれば、それに合うディストリビューションを　選んでインストールです。</p>
+<p>　ASUS T100TA （タブレットでも利用できるもの）は、USBだとBIOSによっては設定を切替えても　起動しないので、　DVD・CD-ROMを利用して起動するとうまくLinuxがインストールできる製品も　あるかもしれません。　USB 接続の読込・書込可能な、光学機器（CD・DVD・BD ドライブ）を用意したほうが楽かもしれません。</p>
+<p>　USBメモリは、容量8GiB以上のものを準備します。現在のISOファイルがDVD対応となっているので　4.7GiBサイズになっているものがあるからです。　BDのは25GiBとなりますがここまでの容量のUSB　はまだないと思います。</p>
+<p>　Rufus は以下のサイトで公開しているようです。　https://rufus.ie/ja</p>
+<p>　「流布ｓ、流布ｓ Linux」というこの資料の題目を考えた後、「流布s」をローマ字で綴ると　Rufusとなるので、上記Rufusも皆に使ってもらおうという意識で名前を考えたのではと　思った次第です。考え違いや的外れであればすいません。</p>
+<p>	付録として、　各ディストリビューションのインストール画面遷移を提示しています。　入力がある部分で、何を入力すれば良いかを多少コメントしています。　これで、Linuxが利用できるようになり、サポート切れがないようにアップデートを行えば　数年は、ずっと使い続けられます。</p>
+<p>　PCマシンを長く使い続けること、自分が使い易くなるようにカスタマイズをしなくても使い続けれます。</p>
+      </div>
+      <nav class="book-navi book-prev">
+              </nav>
+      <nav class="book-navi book-next">
+                <a href="ch02-1_installlistkeyboard.html">
+          <div class="book-cursor"><span class="cursor-next">▶</span></div>
+        </a>
+              </nav>
+    </div>
+  </div>
+  <footer>
+      </footer>
+<style type="text/css">
+.showbox {
+   display: inline-block;
+}
+.showbox p {
+   text-align: center;
+}
+.showbox img {
+   border: 2px solid #00a;
+   display: block;
+}
+.showbox img + span {
+   background-color: #00a;
+   color: white;
+   font-weight: bold;
+   display: block;
+}
+</style>
+<script type="text/javascript">
+
+var imgset1 = [
+ 	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g29.png", "debian1106-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g30.png", "debian1106-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g31.png", "debian1106-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g32.png", "debian1106-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g33.png", "debian1106-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g34.png", "debian1106-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g35.png", "debian1106-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g36.png", "debian1106-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/debian1106-g36.png", "debian1106-g" ] 
+];
+
+var imgset2 = [
+ 	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g0.png", "Ubuntu2204-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g1.png", "Ubuntu2204-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g2.png", "Ubuntu2204-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g3.png", "Ubuntu2204-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g4.png", "Ubuntu2204-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g5.png", "Ubuntu2204-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g6.png", "Ubuntu2204-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g7.png", "Ubuntu2204-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/Ubuntu2204-g7.png", "Ubuntu2204-g" ] 
+];
+
+var imgset3 = [
+ 	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g0.png", "lub2210-def-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g1.png", "lub2210-def-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g2.png", "lub2210-def-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g3.png", "lub2210-def-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g4.png", "lub2210-def-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g5.png", "lub2210-def-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g6.png", "lub2210-def-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/lub2210-def-g6.png", "lub2210-def-g" ] 
+];
+
+var imgset4 = [
+ 	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g0.png", "kub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g1.png", "kub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g2.png", "kub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g3.png", "kub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g4.png", "kub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g5.png", "kub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g6.png", "kub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g7.png", "kub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/kub2210-g7.png", "kub2210-g" ] 
+];
+
+var imgset5 = [
+ 	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/xub2210-g0.png", "xub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/xub2210-g1.png", "xub2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/xub2210-g1.png", "xub2210-g" ] 
+];
+
+var imgset6 = [
+ 	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g0.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g1.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g2.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g3.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g4.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g5.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g6.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g7.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g8.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g9.png", "ubstudio2210-g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/ubstudio2210-g9.png", "ubstudio2210-g" ] 
+];
+
+var imgset7 = [
+ 	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g1.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g2.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g3.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g4.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g5.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g6.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g7.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g8.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g9.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g10.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g11.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g12.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g13.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g14.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g15.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g16.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g17.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g18.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g19.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g20.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g21.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g22.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g23.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g24.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g25.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g26.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g27.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g28.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g29.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g30.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g31.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g32.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g33.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g34.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g35.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g36.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g37.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g38.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g39.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g40.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g41.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g42.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g43.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g44.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g45.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g46.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g47.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g48.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g49.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g50.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g51.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g52.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g53.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g54.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g55.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g56.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g57.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g58.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g59.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g60.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g61.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g62.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g63.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g64.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g65.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g66.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g67.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g68.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g69.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g70.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g71.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g72.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g73.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g74.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g75.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g76.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g77.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g78.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g79.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g80.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g81.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g82.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g83.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g84.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g85.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g86.png", "garudadr460_g" ] , 
+	["/home/stingll/LC_jostingll/vastingll_difsion/manage_doc/images/garudadr460_g86.png", "garudadr460_g" ] 
+];
+var showset = [
+['slideshow1', imgset1, 1500],
+['slideshow2', imgset2, 1500],
+['slideshow3', imgset3, 1500],
+['slideshow4', imgset4, 1500],
+['slideshow5', imgset5, 1500],
+['slideshow6', imgset6, 1500],
+['slideshow7', imgset7, 1500]
+];
+</script>
+<script type="text/javascript">
+// -----------------------------------------------
+// ▼関数オブジェクトA：指定画像を順に表示させる処理（※書き換え不要）
+// -----------------------------------------------
+var ImageSlider = function() {
+   this.ct = 0;   // カウンタ
+   this.slide = function(target,imglist) {
+      if( this.ct >= imglist.length ) {
+         // カウンタが画像数よりも大きくなったら0番に戻す
+         this.ct = 0;
+      }
+      // スライドショーの掲載領域を作っている対象要素を得る
+      var targetId = document.getElementById(target);
+      // 1つ目のimg要素にある画像URLを置き換える
+      targetId.getElementsByTagName('img')[0].src = imglist[this.ct][0];
+      // 1つ目のspan要素にあるキャプション文字列を置き換える
+      targetId.getElementsByTagName('span')[0].innerHTML = imglist[this.ct][1];
+      // カウンタを1進める
+      this.ct++;
+   }
+};
+
+// ---------------------------------------------
+// ▼関数オブジェクトB：スライドショーを制御する（※書き換え不要）
+// ---------------------------------------------
+var ShowController = function(target,imglist,intsec) {
+   this.slideid = 0;        // タイマーID保持用
+   this.imgsld  = 0;        // スライドショー実行オブジェクトの保持用
+   this.target  = target;   // 対象要素のid名保持用
+   this.imglist = imglist;  // 画像リストの変数
+   this.intsec  = intsec;   // 画像切り替えミリ秒数
+   this.startstop = function() {
+      if( this.slideid == 0 ) {
+         // 始まっていなければ始める
+         var self = this;
+         if( !self.imgsld ) { self.imgsld = new ImageSlider(); }
+         this.slideid = setInterval( function() { self.imgsld.slide(self.target,self.imglist); },this.intsec);      // ※slideidには「0ではない正の整数値」が入る
+      }
+      else {
+         // IDがあれば止める
+         clearInterval(this.slideid);
+         this.slideid = 0;
+      }
+   }
+};
+
+// ----------------------------------------------------
+// ▼すべてのボタンのクリックイベントに関数を割り当てる（※書き換え不要）
+// ----------------------------------------------------
+var ctrlButtons = document.getElementsByClassName('startstopbtn');
+for( var i = 0; i < ctrlButtons.length; i++ ) {
+   var oneshow = new ShowController(showset[i][0],showset[i][1],showset[i][2]);
+   (function(){
+      var os = oneshow;
+      ctrlButtons[i].onclick = function() { os.startstop(); };
+   })();
+}
+</script>
+</body>
+</html>
